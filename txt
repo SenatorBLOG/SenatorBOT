@@ -1,0 +1,45 @@
+const Telegraf = require('telegraf');
+require('dotenv').config();
+
+const bot = new Telegraf(process.env.BOT_TOKEN)
+const getInvoice = (id) => {
+  const invoice = {
+    chat_id: id, 
+    provider_token: process.env.PROVIDER_TOKEN, 
+    start_parameter: 'get_access',  
+    title: 'Postcard', 
+    description: 'Your memory from around the world', 
+    currency: 'USD', 
+    prices: [{ label: 'Invoice Title', amount: 4 * 100 }], 
+    photo_url: 'https://www.forma-studio.com/assets/images/postcards/otkritki_01.jpg',
+    photo_width: 500, 
+    photo_height: 281, 
+    need_name: true,
+    need_shipping_address: true,
+    is_flexible: true,
+    payload: { 
+      unique_id: `${id}_${Number(new Date())}`,
+      provider_token: process.env.PROVIDER_TOKEN 
+    }
+  }
+
+  return invoice
+}
+
+bot.use(Telegraf.log())
+
+bot.start((ctx) => ctx.reply(`Hi ${ctx.message.from.first_name}`));
+bot.help((ctx) => ctx.reply('Send me a sticker'));
+
+
+bot.hears('pay', (ctx) => {  
+  return ctx.replyWithInvoice(getInvoice(ctx.from.id)) 
+})
+
+bot.on('pre_checkout_query', (ctx) => ctx.answerPreCheckoutQuery(true)) 
+
+bot.on('successful_payment', async (ctx, next) => { 
+  await ctx.reply('SuccessfulPayment')
+})
+
+bot.launch()
