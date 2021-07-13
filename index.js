@@ -29,7 +29,7 @@ const getInvoice = (id) => {
 
 bot.use(Telegraf.log())
 bot.start((ctx) => ctx.reply(`Hi ${ctx.message.from.first_name}`));
-bot.help((ctx) => ctx.reply('Use the PAY command to get an invoice for payment'));
+bot.help((ctx) => ctx.reply('Use the `pay` command to get an invoice for payment'));
 bot.command('pay', (ctx) => {    // это обработчик конкретного текста, данном случае это - "pay"
   return ctx.replyWithInvoice(getInvoice(ctx.from.id)) //  метод replyWithInvoice для выставления счета  
 })
