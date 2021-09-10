@@ -11,9 +11,9 @@ const getInvoice = (id) => {
     description: 'Your memory from around the world', 
     currency: 'rub', // Трехбуквенный код валюты ISO 4217
     prices: [
-      { label: 'Postcard', amount: 3,5 * 100 * 100 },
+      { label: 'Postcard', amount: 7 * 100 * 50 }
     ], 
-    photo_url: 'https://static.wixstatic.com/media/e058b7_bd27e2ba2aa54478b21723156ac72207~mv2.jpg/v1/fill/w_1016,h_677,al_c,q_85,usm_0.66_1.00_0.01/e058b7_bd27e2ba2aa54478b21723156ac72207~mv2.jpg',
+    photo_url: 'https://www.forma-studio.com/assets/images/postcards/otkritki_01.jpg',
     is_flexible: true,
     photo_width: 500, // Ширина фото
     photo_height: 281, // Длина фото
