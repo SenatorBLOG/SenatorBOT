@@ -11,7 +11,7 @@ const getInvoice = (id) => {
     description: 'Your memory from around the world', 
     currency: 'rub', // Трехбуквенный код валюты ISO 4217
     prices: [
-      { label: 'Postcard', amount: 3,5 * 100 * 100 }
+      { label: 'Postcard', amount: 3,5 * 100 * 100 },
     ], 
     photo_url: 'https://static.wixstatic.com/media/e058b7_bd27e2ba2aa54478b21723156ac72207~mv2.jpg',
     is_flexible: true,
