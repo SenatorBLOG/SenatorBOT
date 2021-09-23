@@ -7,11 +7,11 @@ const getInvoice = (id) => {
   const invoice = {
     chat_id: id, // Уникальный идентификатор целевого чата или имя пользователя целевого канала
     provider_token: process.env.PROVIDER_TOKEN, 
-    title: 'Postcard', 
+    title: 'Временно недоступны', 
     description: 'Your memory from around the world', 
     currency: 'rub', // Трехбуквенный код валюты ISO 4217
     prices: [
-      { label: 'Временно не доступны', amount: 7 * 100 * 50 }
+      { label: 'Временно недоступны', amount: 7 * 100 * 50 }
     ], 
     photo_url: 'https://static5.depositphotos.com/1008458/490/i/600/depositphotos_4906550-stock-photo-red-stop-sign.jpg',
     is_flexible: true,
@@ -28,7 +28,7 @@ const getInvoice = (id) => {
 
 bot.use(Telegraf.log())
 bot.start((ctx) => ctx.reply(`Hi ${ctx.message.from.first_name}`));
-bot.help((ctx) => ctx.reply('Открытки можно купить переводом на мой номер +79802510158, в сообщении к переводу укажите страну,город,индекс и точный адрес с квартирой, на который отправить открытку! Стоимость 300рублей.'));
+bot.help((ctx) => ctx.reply('Открытки можно купить переводом на мой номер +79802510158, в сообщении к переводу укажите страну,город,индекс и точный адрес с квартирой,и конечно же ИМЯ на которое отправить открытку! Стоимость 300рублей.'));
 bot.command('pay', (ctx) => {    // это обработчик конкретного текста, данном случае это - "pay"
   return ctx.replyWithInvoice(getInvoice(ctx.from.id)) //  метод replyWithInvoice для выставления счета  
 })
